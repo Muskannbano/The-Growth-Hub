@@ -11,7 +11,7 @@ const Contact = () => {
   const [contact, setContact] = useState(defaultContactForm);
   
   const [userData, setUserData] = useState(true)
-  const {user} = useAuth()
+  const {user, API} = useAuth()
   if(userData && user){
     setContact({
       username:user.username,
@@ -32,14 +32,14 @@ const Contact = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/form/contact",{
-        method:"POST",
-        headers:{
-          'Content-Type':"application/json"
+      const response = await fetch(`${API}/api/form/contact`, {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
         },
-        body:JSON.stringify(contact)
+        body: JSON.stringify(contact)
       })
-      if(response.ok){
+      if (response.ok) {
         setContact(defaultContactForm)
         const data = await response.json()
         console.log(data)

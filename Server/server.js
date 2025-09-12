@@ -6,6 +6,7 @@ import express from "express"
 import authRouter  from "./router/auth-router.js"
 import contactRouter from "./router/contact-router.js"
 import serviceRouter from "./router/service-router.js"
+import adminRouter from "./router/admin-router.js"
 import { connectDb } from "./utils/db.js"
 import { errorMiddleware } from "./middleware/error-middleware.js"
 import cors from "cors"
@@ -22,6 +23,7 @@ app.use(express.json())
 app.use("/api/auth", authRouter);
 app.use("/api/form", contactRouter);
 app.use("/api/data", serviceRouter);
+app.use("/api/admin",adminRouter)
 app.use(errorMiddleware)
 
 const PORT = 5000

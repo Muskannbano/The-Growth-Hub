@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 import { useAuth } from "../store/auth";
+import {toast} from "react-toastify"
 const Register = () => {
   const [user, setUser] = useState({
     username: "",
@@ -9,7 +10,7 @@ const Register = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const {storeTokenInLs} = useAuth()
+  const {storeTokenInLs, API} = useAuth()
   const handleInput = (e) => {
     console.log(e);
     let name = e.target.name;
@@ -23,16 +24,17 @@ const Register = () => {
     e.preventDefault();
     console.log(user);
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+      const response = await fetch(`${API}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(user),
       });
-      if (response.ok) {
-        const res_data = await response.json()
+       const res_data = await response.json()
         console.log("Response from the server", res_data)
+      if (response.ok) {
+       
         //storing the token in the local host
         storeTokenInLs(res_data.token)
         setUser({
@@ -41,9 +43,12 @@ const Register = () => {
           phone: "",
           password: "",
         });
-        navigate("/login");
+        toast.success("Registration Successful!")
+        navigate("/");
+      }else{
+        toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message)
       }
-      console.log(response);
+      
     } catch (error) {
       console.log("Error in Registration", error);
     }

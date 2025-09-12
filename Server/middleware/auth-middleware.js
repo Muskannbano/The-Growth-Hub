@@ -7,7 +7,7 @@ export const authMiddleware = async(req, res, next) => {
       .status(401)
       .json({ message: "Unauthorized HTTP, Token not provided." });
   }
-  const jwtToken = token.replace("Bearer", "").trim();
+  const jwtToken = token.replace("Bearer ", "").trim();
   console.log("Token from auth middleware", jwtToken);
   try {
     const isverified = jwt.verify(jwtToken, process.env.JWT_SECRET_KEY);
