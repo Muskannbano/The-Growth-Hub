@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const authorizationToken = `Bearer ${token}`;
 
   const API = import.meta.env.VITE_APP_URI_API;
+  console.log("API URL:", API);
 
   const storeTokenInLs = (serverToken) => {
     setToken(serverToken); //  update React state
