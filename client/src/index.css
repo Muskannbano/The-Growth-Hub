@@ -108,11 +108,11 @@ a:active {
   position: relative;
   text-transform: capitalize;
 }
-h1::after {
+.main-heading::after {
   content: "";
   display: block;
   position: absolute;
-  bottom: -1.5rem;
+  /* bottom: -1.5rem; */
   width: 60%;
   height: 3px;
   background: #6366f1; /* purple/blue accent */
