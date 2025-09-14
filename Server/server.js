@@ -13,12 +13,16 @@ import cors from "cors"
 const app = express()
 
 const corsOption = {
-    origin:"http://localhost:5173",
-    methods:"GET, POST, PUT, DELETE, PATCH, HEAD",
-    credentials:true
-}
+  origin: [
+    "http://localhost:5173",  // for local dev
+    "https://the-growth-hub-client.onrender.com" // for deployed frontend
+  ],
+  methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+  credentials: true
+};
 
-app.use(cors(corsOption))
+app.use(cors(corsOption));
+
 app.use(express.json())
 app.use("/api/auth", authRouter);
 app.use("/api/form", contactRouter);
