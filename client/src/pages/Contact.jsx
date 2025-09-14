@@ -53,12 +53,13 @@ const Contact = () => {
   return (
     <>
       <section className="section-contact">
-        <div className="contact-content container">
+        <div className="contact-content">
           <h1 className="main-heading">Contact Us</h1>
         </div>
-        <div className=" grid grid-two-cols">
+        <div className=" contact-container">
           <div className="contact-img">
-            <img src="/images/contact.jpg" alt="" />
+            <img src="/images/contact.jpg" alt="" 
+             width="600" height="100%" />
           </div>
           <div className="section-form">
             <form onSubmit={handleSubmit}>
@@ -112,7 +113,7 @@ const Contact = () => {
           style={{
             position: "relative",
             paddingBottom: "56.25%",
-            marginBottom:"10%",
+            marginTop:"10%",
             height: 0,
             overflow: "hidden",
           }}

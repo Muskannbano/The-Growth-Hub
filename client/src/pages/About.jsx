@@ -8,10 +8,10 @@ const About = () => {
   return (
     <>
       <main>
-        <section className="section-hero">
-          <div className="container grid grid-two-cols">
-            <div className="hero-content">
-              <p>Hii {user.username}</p>
+        <section className="about-section-hero">
+          <div className="about-container">
+            <div className="about-hero-content">
+              <p>Hii User, {user.username}</p>
               <h1>Why Choose Us?</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam,
